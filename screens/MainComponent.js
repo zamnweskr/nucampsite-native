@@ -4,11 +4,17 @@ import CampsiteInfoScreen from "./CampsiteInfoScreen"
 import DirectoryScreen from './DirectoryScreen'
 import AboutScreen from "./AboutScreen"
 import ContactScreen from "./ContactScreen"
+import HomeScreen from "./HomeScreen"
 import { createStackNavigator } from "@react-navigation/stack"
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer"
-import HomeScreen from "./HomeScreen"
 import { Icon } from "react-native-elements"
 import logo from '../assets/images/logo.png'
+import { useDispatch } from "react-redux"
+import { useEffect } from "react"
+import { fetchPartners } from '../features/partners/partnersSlice'
+import { fetchCampsites } from '../features/campsites/campsitesSlice'
+import { fetchPromotions } from '../features/promotions/promotionsSlice'
+import { fetchComments } from '../features/comments/commentsSlice'
 
 const Drawer = createDrawerNavigator()
 
@@ -134,6 +140,15 @@ const CustomDrawerContent = (props) => (
 )
 
 const Main = () => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchCampsites())
+        dispatch(fetchPromotions())
+        dispatch(fetchPartners())
+        dispatch(fetchComments())
+    }, [dispatch])
+
     return (
         <View
             style={{
