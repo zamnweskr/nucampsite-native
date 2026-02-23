@@ -7,6 +7,7 @@ import ContactScreen from "./ContactScreen"
 import HomeScreen from "./HomeScreen"
 import ReservationScreen from "./ReservationScreen"
 import FavoritesScreen from "./FavoritesScreen"
+import LoginScreen from "./LoginScreen"
 import { createStackNavigator } from "@react-navigation/stack"
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer"
 import { Icon } from "react-native-elements"
@@ -173,6 +174,28 @@ const FavoritesNavigator = () => {
     )
 }
 
+const LoginNavigator = () => {
+    const Stack = createStackNavigator()
+    return (
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen 
+                name='Login'
+                component={LoginScreen}
+                options={({ navigation }) => ({
+                    headerLeft: () => (
+                        <Icon
+                            name='sign-in'
+                            type='font-awesome'
+                            iconStyle={styles.stackIcon}
+                            onPress={() => navigation.toggleDrawer()}
+                        />
+                    )
+                })}
+            />
+        </Stack.Navigator>
+    )
+}
+
 const CustomDrawerContent = (props) => (
     <DrawerContentScrollView {...props}>
         <View style={styles.drawerHeader}>
@@ -213,6 +236,22 @@ const Main = () => {
                     headerShown: true
                 }}
             >
+                <Drawer.Screen
+                    name='Login'
+                    component={LoginNavigator}
+                    options={{
+                        headerShown: false,
+                        drawerIcon: ({ color }) => (
+                            <Icon
+                                name='sign-in'
+                                type='font-awesome'
+                                size={24}
+                                iconStyle={{ width: 24 }}
+                                color={color}
+                            />
+                        )
+                    }}
+                />
                 <Drawer.Screen
                     name='Home'
                     component={HomeNavigator}
