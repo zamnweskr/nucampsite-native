@@ -25,7 +25,7 @@ const ReservationScreen = () => {
             'Begin Search?',
             'Number of Campers: ' + campers +
             '\nHike-in?: ' + hikeIn +
-            '\nDate: ' + date.toLocaleDateString('en-us'),
+            '\nDate: ' + date.toLocaleDateString('en-US'),
             [
                 {
                     text: 'Cancel',
@@ -36,7 +36,7 @@ const ReservationScreen = () => {
                     text: 'Okay',
                     onPress: () => {
                         presentLocalNotification(
-                            date.toLocaleDateString('en-us')
+                            date.toLocaleDateString('en-US')
                         )
                         resetForm()
                     } 
@@ -116,7 +116,7 @@ const ReservationScreen = () => {
                     <Text style={styles.formLabel}>Date:</Text>
                     <Button
                         onPress={() => setShowCalender(!showCalender)}
-                        title={date.toLocaleDateString('en-us')}
+                        title={date.toLocaleDateString('en-US')}
                         color='#5637DD'
                         accessibilityLabel='Tap me to select a reservation date'
                     />

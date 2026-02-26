@@ -85,7 +85,7 @@ const RenderCampsite = (props) => {
                             type='font-awesome'
                             color='#5637DD'
                             raised
-                            reversed
+                            reverse
                             onPress={() => props.onShowModal()}
                         />
                     </View>
